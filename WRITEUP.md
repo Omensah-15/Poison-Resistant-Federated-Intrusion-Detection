@@ -1,8 +1,10 @@
-# Heavenz: Poison-Resistant Federated Intrusion Detection
+# Poison-Resistant Federated Intrusion Detection
 
 **Subtitle:** Excluding a malicious bank in every round: F1 0.004 to 0.987 under poisoning
 
 **Track submitted:** Advanced
+
+![Cover: poison-resistant aggregation versus naive FedAvg and coordinate median under attack](figures/cover_image.png)
 
 ## Headline result (Advanced track)
 
@@ -16,6 +18,10 @@ F1 on the organizers' 15,000-row held-out set, mean of 3 training seeds. Scenari
 | Our defense, no attack (clean reference) | 0.9876 +/- 0.0030 | 0.7837 |
 
 The defense recovers essentially all of the clean performance. The exported model (`model_scripted.pt`, `submission.json` in the repo root, trained through the attack, seed 0) scores 0.9895 F1 (precision 0.9883, recall 0.9907) on the held-out set. Seed-0 numbers are single runs; the 3-seed means above are the fair estimate.
+
+![Advanced track: held-out F1 over rounds for naive FedAvg, coordinate median, our defense under attack, and our defense with no attack](figures/advanced_f1_over_rounds.png)
+
+*Held-out F1 over communication rounds under the headline attack, mean of 3 seeds (band = 1 standard deviation). Left: full range. Right: zoom on the defended runs.*
 
 ## Threat model
 
@@ -33,12 +39,20 @@ The aggregation that follows uses square-root size weights, server momentum and 
 
 ## Detection results (3 seeds x 25 rounds)
 
+![Detection map: clients excluded by the defense per round](figures/detection_map.png)
+
+*Dark cells mark clients excluded in that round (seed 0). Client 1 is the attacker.*
+
 | Setting | Malicious excluded | Missed | Honest wrongly excluded |
 |---|---|---|---|
 | Headline attack (1 of 5 clients) | 75 of 75 rounds | 0 | 15 of 300 client-rounds (5%) |
 | No attack | not applicable | not applicable | 33 of 375 client-rounds (8.8%) |
 
 False alarms are cheap because at least three clients always survive: clean F1 (0.9876) and attacked F1 (0.9871) are statistically indistinguishable.
+
+<img src="figures/confusion_matrix.png" alt="Held-out confusion matrix of the exported model" width="380">
+
+*Confusion matrix of the exported model (trained through the attack) on the 15,000-row held-out set.*
 
 ## Stress tests (single seed, held-out F1)
 
