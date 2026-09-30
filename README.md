@@ -1,4 +1,6 @@
-# Heavenz: Poison-Resistant Federated Intrusion Detection
+# Poison-Resistant Federated Intrusion Detection
+
+![Cover: poison-resistant aggregation versus naive FedAvg and coordinate median under attack](figures/cover_image.png)
 
 CAIRLab hackathon, Day 2, **Advanced track** (detect or resist a malicious bank). Five simulated banks train a shared NSL-KDD intrusion detector without pooling data; one bank flips its labels and inflates its update 15x.
 
@@ -11,7 +13,23 @@ CAIRLab hackathon, Day 2, **Advanced track** (detect or resist a malicious bank)
 | Our defense under attack (after) | 0.9871 |
 | Our defense, no attack (clean reference) | 0.9876 |
 
-Exported model (trained through the attack, seed 0): held-out F1 0.9895. The attacker was excluded in 75 of 75 rounds. Full analysis, stress tests and limitations are in `WRITEUP.md`.
+Exported model (trained through the attack, seed 0): held-out F1 0.9895. The attacker was excluded in 75 of 75 rounds. Full analysis, stress tests and limitations are in [`WRITEUP.md`](WRITEUP.md).
+
+### F1 over communication rounds under attack
+
+Mean of 3 seeds, band = 1 standard deviation. Left: full range. Right: zoom on the defended runs.
+
+![Advanced track: held-out F1 over rounds for naive FedAvg, coordinate median, our defense under attack, and our defense with no attack](figures/advanced_f1_over_rounds.png)
+
+### Which clients the defense excludes
+
+Dark cells mark clients excluded in that round (seed 0). Client 1 is the attacker.
+
+![Detection map: clients excluded by the defense per round](figures/detection_map.png)
+
+### Confusion matrix of the exported model (held-out set)
+
+<img src="figures/confusion_matrix.png" alt="Held-out confusion matrix of the exported model" width="380">
 
 ## Contents
 
