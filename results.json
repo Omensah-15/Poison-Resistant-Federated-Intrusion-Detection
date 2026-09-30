@@ -1,0 +1,97 @@
+{
+  "starter_reference": {
+    "IID, FedAvg": {
+      "f1": 0.9620345405523574,
+      "kdd_f1": 0.754965034965035
+    },
+    "Non-IID, FedAvg": {
+      "f1": 0.9578149157034529,
+      "kdd_f1": 0.7241143749390065
+    },
+    "Non-IID + attack, FedAvg": {
+      "f1": 0.20097362493642373,
+      "kdd_f1": 0.42289236531034213
+    },
+    "Non-IID + attack, coordinate median": {
+      "f1": 0.911467247549401,
+      "kdd_f1": 0.671055338407735
+    }
+  },
+  "advanced_headline": {
+    "Naive FedAvg under attack": {
+      "f1_mean": 0.0038524782710829225,
+      "f1_std": 0.005448227019713122,
+      "kdd_f1_mean": 0.013892046172109823
+    },
+    "Coordinate median under attack": {
+      "f1_mean": 0.9841100012394076,
+      "f1_std": 0.0006878309078753747,
+      "kdd_f1_mean": 0.7488306841550431
+    },
+    "Our defense under attack": {
+      "f1_mean": 0.9870952576355189,
+      "f1_std": 0.0019546786568204887,
+      "kdd_f1_mean": 0.7868071272227115
+    },
+    "Our defense, no attack": {
+      "f1_mean": 0.9876477492840908,
+      "f1_std": 0.002966352731229561,
+      "kdd_f1_mean": 0.7837262298222881
+    },
+    "detection_attack": {
+      "true_pos": 75,
+      "false_neg": 0,
+      "false_pos": 15,
+      "true_neg": 285
+    },
+    "detection_clean": {
+      "true_pos": 0,
+      "false_neg": 0,
+      "false_pos": 33,
+      "true_neg": 342
+    }
+  },
+  "advanced_stress": [
+    {
+      "scenario": "2 attackers, label flip + 50x scale",
+      "naive FedAvg F1": 0.6356,
+      "coord. median F1": 0.9873,
+      "our defense F1": 0.9883,
+      "detected (TP / FN)": "50 / 0",
+      "false alarms": 0
+    },
+    {
+      "scenario": "2 attackers, label flip only",
+      "naive FedAvg F1": 0.7309,
+      "coord. median F1": 0.9868,
+      "our defense F1": 0.9881,
+      "detected (TP / FN)": "45 / 5",
+      "false alarms": 0
+    },
+    {
+      "scenario": "1 attacker, sign flip x10",
+      "naive FedAvg F1": 0.0,
+      "coord. median F1": 0.9803,
+      "our defense F1": 0.9895,
+      "detected (TP / FN)": "25 / 0",
+      "false alarms": 6
+    }
+  ],
+  "exported": {
+    "metrics": {
+      "precision": 0.9883,
+      "recall": 0.9907,
+      "f1": 0.9895
+    },
+    "confusion_matrix": [
+      [
+        7930,
+        82
+      ],
+      [
+        65,
+        6923
+      ]
+    ]
+  }
+}
