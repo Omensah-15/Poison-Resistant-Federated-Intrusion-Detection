@@ -4,7 +4,7 @@
 
 CAIRLab hackathon, Day 2, **Advanced track** (detect or resist a malicious bank).
 
-## The problem in plain English
+## The problem
 
 Five banks want to build one shared model that spots network attacks (the NSL-KDD intrusion dataset). They can't share their data with each other, so each bank trains on its own data and sends only its learned update to a central server. The server averages the updates into one shared model. This is called **federated learning**.
 
