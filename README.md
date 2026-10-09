@@ -10,7 +10,7 @@ Five banks want to build one shared model that spots network attacks (the NSL-KD
 
 The weakness is trust. The server can't see anyone's data, so it has to believe every update. In our scenario, one bank cheats: it flips its labels (teaching the model that attacks are normal and normal traffic is an attack) and sends its update 15 times louder than everyone else's. With plain averaging, that one bank drowns out the four honest ones and the model stops working.
 
-## What we built
+## What is built
 
 A smarter way for the server to combine updates, one that does not blindly trust everyone. Each round it checks three things:
 
